@@ -100,6 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			self.myAmount = 0;
 			self.myChange = {};
 
+			document.userForm.amount.value = self.myAmount;
+
 		},
 
 		run: function(ev){
