@@ -61,7 +61,7 @@ input[name="submit"] {
   text-indent: 0;
 }
 #cat {
-  width: 500px;
+  width: 100%;
   margin: 0;
   padding: 0 10px;
   border-radius: 25%;
