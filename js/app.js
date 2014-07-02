@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			var self = this;
 
-			if (!n){
+			if ( parseFloat(n) === 0.00 ){
 				
 				return false;
 
@@ -62,6 +62,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		},
 
+		clearUsrInput: function(data){
+
+			["£", "p"].forEach(function(v){
+
+				data = data.replace(v, "");
+
+			});
+
+
+			return data;
+
+		},
+
 		setAmount: function(x){
 
 			var self = this;
@@ -74,9 +87,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			}
 
-			self.myAmount = document.userForm.amount.value.replace("£", "").replace("p", "");
+			self.myAmount = self.clearUsrInput( document.userForm.amount.value );
 
 			self.myAmount = self.normalise(self.myAmount);
+
+		},
+
+		reset: function() {
+
+			var self = this;
+
+			self.myAmount = 0;
+			self.myChange = {};
 
 		},
 
@@ -103,6 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				v !== 0 ? self.calc(v) : null;
 
 			});
+
+			self.reset();
 
 		},
 
