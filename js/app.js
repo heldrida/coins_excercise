@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			var self = this;
 
-			usrInp = this.myAmount;
-		  
-		  return /^[0-9]+p|£[0-9]+\.?([0-9])+$/.test(usrInp) ? usrInp : false;
+			usrInp = document.userForm.amount.value;
+
+			return /^[0-9]+p|£[0-9]+\.?([0-9])+$/.test(usrInp) ? usrInp : false;
 		  
 		},
 
@@ -66,7 +66,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			var self = this;
 
-			self.myAmount = document.userForm.amount.value;;
+			if ( !self.validateUserInput() ){
+
+				alert("Sorry! Please try again, using the format as it's demonstrated in the following example: 150p or £1.50");
+
+				return false;
+
+			}
+
+			self.myAmount = document.userForm.amount.value.replace("£", "").replace("p", "");
 
 			self.myAmount = self.normalise(self.myAmount);
 
