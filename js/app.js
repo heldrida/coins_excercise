@@ -11,38 +11,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		myForm: false,
 
+		validateUserInput: function(){
+
+			var self = this;
+
+			usrInp = this.myAmount;
+		  
+		  return /^[0-9]+p|£[0-9]+\.?([0-9])+$/.test(usrInp) ? usrInp : false;
+		  
+		},
+
 		calc: function(n){
 
-		  if (n === 0){
-		  	
-		  	return false;
+			var self = this;
 
-		  }
-		  
-		  var self = this;
-		  var num = n < 1 ? n * 100 : n;
-		  this.myChange[n] = [];
+			if (!n){
+				
+				return false;
 
-		  self.myCoins.forEach(function(v){
-		    
-		    v = n < 1 ? v * 100 : v;
-		    
-		    var x = Math.floor( num / v );
-		    num = num % v;
+			}
 
-		    if ( x !== 0 ) {
-		    
-		      self.myChange[n].push([x, v]);
-		    
-		    }
-		    
-		  });
+			var self = this;
+			var num = n < 1 ? n * 100 : n;
+			this.myChange[n] = [];
 
-		  console.log(self.myChange);
+			self.myCoins.forEach(function(v){
+
+			v = n < 1 ? v * 100 : v;
+
+			var x = Math.floor( num / v );
+			num = num % v;
+
+			if ( x !== 0 ) {
+
+			  self.myChange[n].push([x, v]);
+
+			}
+
+			});
+
+			console.log(self.myChange);
 
 		},
 
 		normalise: function(usrVal){
+
+			var self = this;
 
 			return usrVal === parseInt(usrVal) ? usrVal : usrVal * 100;
 
@@ -50,9 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		setAmount: function(x){
 
-			this.myAmount = document.userForm.amount.value;;
+			var self = this;
 
-			this.myAmount = this.normalise(this.myAmount);
+			self.myAmount = document.userForm.amount.value;;
+
+			self.myAmount = self.normalise(self.myAmount);
 
 		},
 
@@ -66,12 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			self = this;
 
-			this.setAmount();
+			self.setAmount();
 
-			this.myAmount = this.myAmount / 100;
+			self.myAmount = self.myAmount / 100;
 			
-			integer = Math.floor(this.myAmount);
-			decimal = this.myAmount - integer;
+			integer = Math.floor(self.myAmount);
+			decimal = self.myAmount - integer;
 			decimal = decimal.toFixed(2);
 
 			[integer, decimal].forEach(function(v){
