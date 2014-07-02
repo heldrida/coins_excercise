@@ -11,29 +11,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		myForm: false,
 
-		setAmount: function(x){
+		normalise: function(usrVal){
 
-			console.log("fn setAmount!");
-
-			this.myAmount = document.userForm.amount.value;;
-
-			console.log(this.myAmount);
+			return usrVal === parseInt(usrVal) ? usrVal : usrVal * 100;
 
 		},
 
-		run: function(event){
-			
-			console.log("fn run!");
+		setAmount: function(x){
 
-			event.preventDefault();
+			this.myAmount = document.userForm.amount.value;;
+
+			this.myAmount = this.normalise(this.myAmount);
+
+		},
+
+		run: function(ev){
+
+			ev.preventDefault();
+
+			var x, 
+				integer, 
+				decimal;
 
 			this.setAmount();
+
+			this.myAmount = this.myAmount / 100;
+			integer = Math.floor(this.myAmount);
+			decimal = this.myAmount - integer;
+
+			console.log("this.myAmount");
+			console.log(this.myAmount);
+
+			console.log("integer:");
+			console.log(integer);
+
+			console.log("decimal");
+			console.log(decimal);
 
 		},
 
 		init: function(){
-
-			console.log("fn init!");
 
 			this.myForm = document.userForm;
 
