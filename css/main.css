@@ -1,0 +1,80 @@
+body {
+  background-color: #fff;
+}
+.myFont {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
+.clickable {
+  cursor: pointer;
+  -webkit-transition: 0.2s linear;
+}
+.clickable:hover {
+  opacity: 0.75;
+}
+.cText {
+  text-align: center;
+}
+.row {
+  padding: 20px 0;
+}
+.cel {
+  float: left;
+}
+.celA {
+  width: 25%;
+}
+.celB {
+  width: 25%;
+}
+.wrapper p {
+  padding: 0 5px;
+}
+.highlight {
+  color: #c15;
+}
+h1 {
+  text-align: center;
+}
+form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0;
+}
+form input {
+  border: 1px #aaa solid;
+  height: 3em;
+  line-height: 3em;
+  text-indent: 1em;
+  border-radius: 0.5em;
+}
+input[name="amount"],
+input[name="submit"] {
+  width: 100%;
+  display: block;
+}
+input[name="submit"] {
+  text-indent: 0;
+}
+#cat {
+  width: 500px;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 25%;
+}
+.imgWrp {
+  width: 250px;
+  margin: 200px auto 0;
+  text-align: center;
+}
+.imgWrp p {
+  font-size: 0.85em;
+  line-height: normal;
+}
+.imgWrp img {
+  width: 60%;
+}
