@@ -33,23 +33,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			var self = this;
 			var num = n < 1 ? n * 100 : n;
+			var myType = n < 1 ? "decimal" : "integer";
 
-			self.myChange[n] = [];
+			self.myChange[myType] = [];
 
 			self.myCoins.forEach(function(v){
 
-				v = n < 1 ? v * 100 : v;
+				v = myType === "decimal" ? v * 100 : v;
 
 				var x = Math.floor( num / v );
 				num = num % v;
 
 				if ( x !== 0 ) {
 
-				  self.myChange[n].push([x, v]);
+				  self.myChange[myType].push([x, v]);
 
 				}
 
 			});
+
+			console.log( self.myChange );
 
 		},
 
@@ -109,8 +112,35 @@ document.addEventListener("DOMContentLoaded", function () {
 			
 			var output = '';
 
-			console.log( "self.myChange" );
-			console.log( self.myChange );
+			/*
+			[ self.myChange["integer"], self.myChange["decimal"]  ].forEach(function(v, k){
+
+				console.log(v);
+
+				output += v[0] + "x " + v[1] + " pound" + ( v[1] > 1 ? "s" : "" );
+
+			});
+			*/
+
+			for (p in self.myChange){
+
+				self.myChange[p].forEach(function(v){
+
+					if (p === "integer" ){
+						output += v[0] + "x £" + v[1] + ", ";
+					} else {
+						output += v[0] + "x " + v[1] + "p, ";
+					}
+
+				});
+
+			}
+
+			output = output.substr(0, output.length -2);
+
+			console.log("self.myAmount");
+			console.log( self.myAmount );
+			alert("Result: " + output);
 
 		},
 
