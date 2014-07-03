@@ -52,8 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			});
 
-			console.log( self.myChange );
-
 		},
 
 		normalise: function(usrVal){
@@ -111,16 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			var self = this;
 			
 			var output = '';
-
-			/*
-			[ self.myChange["integer"], self.myChange["decimal"]  ].forEach(function(v, k){
-
-				console.log(v);
-
-				output += v[0] + "x " + v[1] + " pound" + ( v[1] > 1 ? "s" : "" );
-
-			});
-			*/
 
 			for (p in self.myChange){
 
