@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 .row {
-  padding: 20px 0;
+  padding: 10px 0;
 }
 .cel {
   float: left;
@@ -43,7 +43,7 @@ h1 {
 form {
   width: 50%;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 0 50px 0;
 }
 form input {
   border: 1px #aaa solid;
@@ -77,4 +77,28 @@ input[name="submit"] {
 }
 .imgWrp img {
   width: 60%;
+}
+#resul {
+  width: 100%;
+}
+.myList > div {
+  font-size: 1.5em;
+  border-radius: 1em;
+  padding: 0.5em 2em;
+  margin-bottom: 1em;
+}
+.myList > div:nth-child(odd) {
+  background-color: #EEFAEE;
+}
+.myList > div:nth-child(even) {
+  background-color: #EEE;
+}
+.myList h6,
+.myList p {
+  padding: 0;
+  margin: 0;
+}
+.myList h6 {
+  color: #C15;
+  font-weight: bold;
 }

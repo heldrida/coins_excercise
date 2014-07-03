@@ -138,9 +138,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			output = output.substr(0, output.length -2);
 
-			console.log("self.myAmount");
-			console.log( self.myAmount );
-			alert("Result: " + output);
+			var div = document.createElement("div"); 
+			var p = document.createElement("p"); 
+			var h = document.createElement("h6");
+
+			p.appendChild(document.createTextNode(output));
+			h.appendChild(document.createTextNode("Result for £" + self.myAmount ));
+			
+			div.appendChild(h); 
+			div.appendChild(p);
+
+			if (document.getElementById("result").hasChildNodes()){
+	
+				document.getElementById("result").insertBefore(div, document.getElementById("result").firstChild);
+
+			} else {
+
+				document.getElementById("result").appendChild(div);
+
+			}
+
 
 		},
 
