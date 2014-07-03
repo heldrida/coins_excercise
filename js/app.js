@@ -33,24 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			var self = this;
 			var num = n < 1 ? n * 100 : n;
-			this.myChange[n] = [];
+
+			self.myChange[n] = [];
 
 			self.myCoins.forEach(function(v){
 
-			v = n < 1 ? v * 100 : v;
+				v = n < 1 ? v * 100 : v;
 
-			var x = Math.floor( num / v );
-			num = num % v;
+				var x = Math.floor( num / v );
+				num = num % v;
 
-			if ( x !== 0 ) {
+				if ( x !== 0 ) {
 
-			  self.myChange[n].push([x, v]);
+				  self.myChange[n].push([x, v]);
 
-			}
+				}
 
 			});
-
-			console.log(self.myChange);
 
 		},
 
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			var self = this;
 
-			return usrVal === parseInt(usrVal) ? usrVal : usrVal * 100;
+			return parseFloat(usrVal) === parseInt(usrVal) ? usrVal/100 : usrVal;
 
 		},
 
@@ -104,6 +103,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		},
 
+		showResults: function(){
+
+			var self = this;
+			
+			var output = '';
+
+			console.log( "self.myChange" );
+			console.log( self.myChange );
+
+		},
+
 		run: function(ev){
 
 			ev.preventDefault();
@@ -116,8 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			self.setAmount();
 
-			self.myAmount = self.myAmount / 100;
-			
 			integer = Math.floor(self.myAmount);
 			decimal = self.myAmount - integer;
 			decimal = decimal.toFixed(2);
@@ -127,6 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				v !== 0 ? self.calc(v) : null;
 
 			});
+
+
+			self.showResults();
 
 			self.reset();
 
